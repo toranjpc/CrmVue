@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\User\Http\Controllers\UserController;
 
-Route::prefix('users')->group(function () {
+Route::prefix('users')->middleware('api')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('{id}', [UserController::class, 'show']);
     Route::post('/', [UserController::class, 'store']);
