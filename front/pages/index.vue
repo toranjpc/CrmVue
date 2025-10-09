@@ -1,14 +1,8 @@
 <template>
-  <div class="container mt-5">
+  <div>
     <h1>صفحه اصلی</h1>
-    <p>این صفحه index.vue شماست</p>
-    <NuxtLink to="/dashboard" class="btn btn-secondary w-100 mt-2">
-      داشبورد
-    </NuxtLink>
-
+    <p>خوش آمدید به پروژه Nuxt + Laravel Sanctum ماژولار</p>
+    <nuxt-link to="/login">ورود</nuxt-link>
+    <nuxt-link to="/register">ثبت‌نام</nuxt-link>
   </div>
 </template>
-
-<script setup lang="ts">
-// اگر نمی‌خوای چیزی داشته باشی، همینطور خالی باشه
-</script>

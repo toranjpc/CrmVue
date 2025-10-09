@@ -1,16 +1,12 @@
+<script setup>
+definePageMeta({
+  middleware: 'auth'
+})
+</script>
+
 <template>
-  <div class="container mt-5">
+  <div>
     <h1>Dashboard</h1>
-    <p>Welcome, {{ user?.name }}</p>
-    <button class="btn btn-secondary mt-3" @click="logout">Logout</button>
+    <p>Only logged in user can see this.</p>
   </div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-  middleware: 'auth',
-  authRequired: true // اضافه کردن flag برای middleware
-})
-
-const { user, logout } = useAuth()
-</script>

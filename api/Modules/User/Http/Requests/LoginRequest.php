@@ -14,8 +14,16 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'    => 'required|email',
+            'username' => 'required|string',
             'password' => 'required|string',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username.required' => 'وارد کردن نام کاربری / شماره موبایل الزامی است.',
+            'password.required' => 'وارد کردن رمز عبور الزامی است.',
         ];
     }
 }

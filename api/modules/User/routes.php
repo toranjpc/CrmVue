@@ -18,7 +18,7 @@ Route::prefix('auth')->group(function () {
 });
 
 
-Route::prefix('users')->middleware('api')->group(function () {
+Route::prefix('users')->middleware('auth:sanctum')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('{id}', [UserController::class, 'show']);
     Route::post('/', [UserController::class, 'store']);
