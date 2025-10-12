@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-import { useAuth } from '~/composables/useAuth'
+import { userAuth } from '~/composables/userAuth'
 
-const { user, fetchMe, logout } = useAuth()
+const { user, fetchMe, logout } = userAuth()
 
 onMounted(() => {
   fetchMe()
