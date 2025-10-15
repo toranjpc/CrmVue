@@ -1,7 +1,7 @@
 // nuxt-config.ts
+let bakend = 'http://127.0.0.1:8000/';
 export default defineNuxtConfig({
   ssr: true,
-
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: 'http://192.168.1.7/'
+      apiBase: bakend
     }
   },
 
