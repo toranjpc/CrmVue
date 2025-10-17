@@ -1,5 +1,5 @@
 // nuxt-config.ts
-let bakend = 'http://127.0.0.1:8000/';
+let bakend = 'http://192.168.1.9:8080/';
 export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2025-07-15',

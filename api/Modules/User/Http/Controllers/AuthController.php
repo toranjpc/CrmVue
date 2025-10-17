@@ -13,40 +13,69 @@ class AuthController
 {
     public function register(RegisterRequest $request)
     {
-        $user = User::create([
-            // 'name'     => $request->name,
-            'username'    => $request->mobile,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            $user = User::create([
+                // 'name'     => $request->name,
+                'username'    => $request->mobile,
+                'password' => Hash::make($request->password),
+            ]);
 
-        $token = $user->createToken('api_token')->plainTextToken;
+            $token = $user->createToken('api_token')->plainTextToken;
 
-        return response()->json([
-            'user'  => $user,
-            'token' => $token,
-        ], 201);
+            return response()->json([
+                'status'  => 1,
+                'user'  => $user,
+                'token' => $token,
+            ], 201);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'status'  => 0,
+                'user'  => null,
+                'token' => null,
+            ], 201);
+        }
     }
 
     public function login(LoginRequest $request)
     {
-        $user = User::where('username', $request->username)->first();
+        try {
+            $user = User::where('username', $request->username)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response()->json(['error' => 'Invalid credentials'], 422);
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response()->json(['error' => 'Invalid credentials'], 422);
+            }
+
+            $token = $user->createToken('api_token')->plainTextToken;
+
+            return response()->json([
+                'status'  => 1,
+                'user'  => $user,
+                'token' => $token,
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response()->json([
+                'status'  => 0,
+                'user'  => null,
+                'token' => null,
+            ], 201);
         }
-
-        $token = $user->createToken('api_token')->plainTextToken;
-
-        return response()->json([
-            'user'  => $user,
-            'token' => $token,
-        ]);
     }
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out successfully']);
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return response()->json([
+                'status' => 1
+            ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'status'  => 0,
+            ], 201);
+        }
     }
 
     public function me(Request $request)

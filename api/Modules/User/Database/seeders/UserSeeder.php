@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
                 'alias' => 'کاربر تست',
                 'username' => 'admin',
                 'password' => Hash::make('0012300123'),
-                'mobile' => "091" . rand(20000000, 29999999),
+                'mobile' => "09120703611",
                 'email' => 'admin@example.com',
                 'sex' => 1,
                 'job' => 1,

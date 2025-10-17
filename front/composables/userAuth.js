@@ -23,6 +23,7 @@ export default () => {
   }
 
   const login = async (payload) => {
+    console.log(token.value)
     try {
       const res = await $fetch('/auth/login', {
         baseURL: config.public.apiBase,
