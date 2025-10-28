@@ -44,3 +44,17 @@ if (!function_exists('N_decode')) {
         return substr($plain_text, 0, -$pad);
     }
 }
+
+/*
+    \composer.json
+    ->
+    "autoload": {
+        "psr-4": {
+            "Modules\\": "Modules/",
+
+
+    \bootstrap\providers.php
+    ->
+    Modules\ModuleServiceProvider::class,
+
+*/
