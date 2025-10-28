@@ -1,5 +1,5 @@
 // nuxt-config.ts
-let bakend = 'http://192.168.1.9:8080/';
+let bakend = 'http://crm.vue/';
 export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2025-07-15',

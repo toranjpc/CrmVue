@@ -22,33 +22,33 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
-// import { userAuth } from '~/composables/userAuth' 
+import { reactive, ref } from "vue";
+// import { userAuth } from '~/composables/userAuth'
 
-const form = reactive({ username: '', password: '' })
-const errors = reactive({ username: '', password: '' })
-const serverError = ref('')
-const { login } = userAuth()
+const form = reactive({ username: "", password: "" });
+const errors = reactive({ username: "", password: "" });
+const serverError = ref("");
+const { login } = userAuth();
 
 const submit = async () => {
-  errors.username = ''
-  errors.password = ''
-  serverError.value = ''
+  errors.username = "";
+  errors.password = "";
+  serverError.value = "";
 
-  if (!form.username) errors.username = 'نام کاربری الزامی است'
-  if (!form.password) errors.password = 'رمز عبور الزامی است'
+  if (!form.username) errors.username = "نام کاربری الزامی است";
+  if (!form.password) errors.password = "رمز عبور الزامی است";
 
-  if (errors.username || errors.password) return
+  if (errors.username || errors.password) return;
 
   try {
-    const res = await login(form)
-    console.log('✅ Login successful:', res)
-    navigateTo('/dashboard')
+    const res = await login(form);
+    console.log("✅ Login successful:", res);
+    navigateTo("/dashboard");
   } catch (err) {
-    console.error('❌ Server error:', err)
-    serverError.value = err.message || 'خطا در ورود، لطفاً دوباره تلاش کنید.'
+    console.error("❌ Server error:", err);
+    serverError.value = err.message || "خطا در ورود، لطفاً دوباره تلاش کنید.";
   }
-}
+};
 </script>
 
 <style scoped>
